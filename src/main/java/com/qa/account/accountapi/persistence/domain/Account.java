@@ -24,20 +24,20 @@ public class Account {
 		this.playing = playing;
 	}
 
-	public Long getId() {
+	public Long getAccountId() {
 		return accountId;
 	}
 
-	public void setId(Long id) {
-		this.accountId = id;
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
 	}
 
-	public String getFirstName() {
+	public String getFullName() {
 		return fullName;
 	}
 
-	public void setFirstName(String firstName) {
-		this.fullName = firstName;
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 
 	public String toString() {

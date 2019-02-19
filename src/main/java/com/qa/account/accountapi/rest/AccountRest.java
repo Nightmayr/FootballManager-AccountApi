@@ -3,11 +3,14 @@ package com.qa.account.accountapi.rest;
 import com.qa.account.accountapi.persistence.domain.SentAccount;
 
 import com.qa.account.accountapi.service.AccountService;
-
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.qa.account.accountapi.persistence.domain.Account;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -66,16 +69,14 @@ public class AccountRest {
 		sendToQueue(account);
 		return service.addAccount(account);
 	}
-	
 	@PutMapping("${path.changeBoolean}")
-	 private Account recievingNewBoolean(Account account) {
-		 	System.out.println("dad");
-	    	Boolean booleanToSend = restTemplate.getForObject(generatorURL + basePath +  playerManagerPath , Boolean.class);
-	    // http://localhost:8082/accounts/setPlaying
-	    	account.setPlaying(booleanToSend);
-	    	
-	    return account; 
-	    }
+	 private Account recievingNewBoolean(@RequestBody Account account) {
+		
+    	Boolean booleanToSend = restTemplate.getForObject(generatorURL + basePath +  playerManagerPath + "/" + account.isPlaying(), Boolean.class);
+    	account.setPlaying(booleanToSend);
+	    return account;
+	}
+	    
 
 	private void sendToQueue(Account account) {
 		SentAccount accountToStore = new SentAccount(account);
