@@ -34,6 +34,10 @@ public class AccountRest {
 
 	@Value("${path.genPlayerManager}")
 	private String playerManagerPath;
+	
+	@Value("${path.base}")
+	private String basePath;
+	
 
 	@GetMapping("${path.getAccounts}")
 	public List<Account> getAccounts() {
@@ -63,11 +67,13 @@ public class AccountRest {
 		return service.addAccount(account);
 	}
 	
-	
+	@PutMapping("${path.changeBoolean}")
 	 private Account recievingNewBoolean(Account account) {
-		 	
-	    	Boolean booleanToSend = restTemplate.getForObject(generatorURL + playerManagerPath , Boolean.class);
+		 	System.out.println("dad");
+	    	Boolean booleanToSend = restTemplate.getForObject(generatorURL + basePath +  playerManagerPath , Boolean.class);
+	    // http://localhost:8082/accounts/setPlaying
 	    	account.setPlaying(booleanToSend);
+	    	
 	    return account; 
 	    }
 
