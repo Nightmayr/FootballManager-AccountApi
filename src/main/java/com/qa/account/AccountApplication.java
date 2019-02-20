@@ -22,12 +22,12 @@ public class AccountApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(AccountApplication.class, args);
 	}
-	
+
 	@Bean
 	public RestTemplate restTemplate(RestTemplateBuilder builder) {
 		return builder.build();
 	}
-	
+
 	@Bean
 	public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
 			DefaultJmsListenerContainerFactoryConfigurer configurer) {
@@ -35,7 +35,7 @@ public class AccountApplication {
 		configurer.configure(factory, connectionFactory);
 		return factory;
 	}
-	
+
 	@Bean
 	public MessageConverter jacksonJmsMessageConverter() {
 		MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();

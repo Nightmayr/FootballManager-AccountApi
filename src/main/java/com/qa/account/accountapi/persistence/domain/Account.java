@@ -13,14 +13,14 @@ public class Account {
 	private String fullName;
 	private Boolean playing;
 
-
 	public Account() {
+		// Empty constructor
 	}
 
 	public Account(Long accountId, String fullName, String email, Boolean playing) {
+		this.accountId = accountId;
 		this.fullName = fullName;
 		this.email = email;
-		this.accountId = accountId;
 		this.playing = playing;
 	}
 
@@ -40,10 +40,6 @@ public class Account {
 		this.fullName = fullName;
 	}
 
-	public String toString() {
-		return this.accountId + this.email + this.fullName;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -58,5 +54,10 @@ public class Account {
 
 	public void setPlaying(Boolean playing) {
 		this.playing = playing;
+	}
+	
+	@Override
+	public String toString() {
+		return this.accountId + this.email + this.fullName;
 	}
 }
