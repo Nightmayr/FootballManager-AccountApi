@@ -37,7 +37,7 @@ public class AccountRest {
 	
 	@Value("${path.base}")
 	private String basePath;
-
+ 
 	@Value("${url.playerManager}")
 	private String playerManagerURL;
 
@@ -77,11 +77,10 @@ public class AccountRest {
 		account.setPlaying(booleanToSend);
 		return account;
 	}
-	// http://localhost:8082/accounts/setPlaying
 
 	private void sendToQueue(Account account) {
 		SentAccount accountToStore = new SentAccount(account);
-		jmsTemplate.convertAndSend("${activemq.queue.name}", accountToStore);
+		jmsTemplate.convertAndSend("AccountQueue", accountToStore);
 	}
 
 }

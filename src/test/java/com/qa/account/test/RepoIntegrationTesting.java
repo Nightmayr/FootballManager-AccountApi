@@ -14,7 +14,6 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -40,13 +39,7 @@ public class RepoIntegrationTesting {
 	
 	@Autowired
 	private AccountService service;
-	
-	@Autowired
-	
-	
-	private TestRestTemplate restTemp = new TestRestTemplate();
 
-	private static final Account MOCK_GETACC = new Account(2L , "Umayr", "Cigar" , false);
 	private static final Account MOCK_ACCOUNT = new Account(1L, "Ben", "Taylor", false);
 	private static final Account MOCK_UPDATED_ACCOUNT = new Account(1L, "Alvin", "Joseph",true); 
 	
@@ -87,16 +80,4 @@ public class RepoIntegrationTesting {
 		assertEquals(emptyList, rest.getAccounts());
 	}
 	
-
-//	@Test
-//	public void fCreateAccountTest() {
-//		MOCK_BLANK_ACCOUNT.setFirstName("Malcolm");
-//		MOCK_BLANK_ACCOUNT.setLastName("Lindsay");
-//		
-//		Account testAccount = rest.createAccount(MOCK_BLANK_ACCOUNT);
-//		Account expectedAccount = new Account(2L, "Malcolm", "Lindsay", MOCK_ACCOUNT_NUMBER);
-//		
-//		assertEquals(expectedAccount.toString(), testAccount.toString());
-//		assertEquals(MOCK_PRIZE.toString(), testAccount.getPrize().toString());
-//	}
 }

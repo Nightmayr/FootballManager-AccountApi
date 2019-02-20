@@ -36,7 +36,7 @@ public class EndpointTests {
 	private static final Account MOCK_ACCOUNT_1 = new Account(1L, "Ben", "Taylor", false);
 	private static final Account MOCK_ACCOUNT_2 = new Account(2L, "Alvin", "Joseph", false);
 
-	private static final ResponseEntity<Object> MOCK_RESPONSE_ENTITY = new ResponseEntity<Object>(HttpStatus.ACCEPTED);
+	private static final ResponseEntity<Object> MOCK_RESPONSE_ENTITY = new ResponseEntity<>(HttpStatus.ACCEPTED);
 	private static final String MOCK_URL = "http://mock.com";
 	
 	@Test
@@ -62,7 +62,7 @@ public class EndpointTests {
 		assertEquals(MOCK_RESPONSE_ENTITY, rest.deleteAccount(1L));
 		Mockito.verify(service).deleteAccount(1L);
 	}
-	
+	 
 	@Test
 	public void updateAccountTest() {
 		Mockito.when(service.updateAccount(MOCK_ACCOUNT_1, 1L)).thenReturn(MOCK_RESPONSE_ENTITY);
