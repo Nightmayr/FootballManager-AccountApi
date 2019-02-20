@@ -33,9 +33,7 @@ public class RepoIntegrationTesting {
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
 	
-	@Autowired
-	private SentAccount sent;
-	
+	SentAccount sentAccount = new SentAccount();
 
 	@Autowired
 	private AccountRest rest;
@@ -89,12 +87,7 @@ public class RepoIntegrationTesting {
 		assertEquals(emptyList, rest.getAccounts());
 	}
 	
-	@Test
-	public void gettersTest() {
-		assertEquals("")
-		
-	}
-	
+
 //	@Test
 //	public void fCreateAccountTest() {
 //		MOCK_BLANK_ACCOUNT.setFirstName("Malcolm");
