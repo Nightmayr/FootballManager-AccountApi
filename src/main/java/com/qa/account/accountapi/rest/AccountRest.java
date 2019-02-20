@@ -77,6 +77,7 @@ public class AccountRest {
 		account.setPlaying(booleanToSend);
 		return account;
 	}
+	// http://localhost:8082/accounts/setPlaying
 
 	private void sendToQueue(Account account) {
 		SentAccount accountToStore = new SentAccount(account);

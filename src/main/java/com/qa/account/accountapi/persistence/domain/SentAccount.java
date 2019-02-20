@@ -6,6 +6,7 @@ public class SentAccount {
 	private String fullName;
 	private String email;
 	private Boolean playing;
+	
 
 	public SentAccount() {
 		//Empty constructor
@@ -14,6 +15,8 @@ public class SentAccount {
 	public SentAccount(Account account) {
 		this.accountId = account.getAccountId();
 		this.setFullName(account.getFullName());
+		this.setEmail(account.getEmail());
+		this.setPlaying(account.isPlaying());
 
 	}
 
