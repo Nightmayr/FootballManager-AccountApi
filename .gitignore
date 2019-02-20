@@ -1,9 +1,32 @@
-.mvn
-.settings
-target
+/target/
 .classpath
 .factorypath
 .project
-bin
+
+/bin/
 .scannerwork
 sonar-project.properties
+
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+#Other
+.vscode
+*.properties
+.scannerwork
+.DS_Store
