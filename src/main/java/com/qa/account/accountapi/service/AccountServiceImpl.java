@@ -45,7 +45,7 @@ public class AccountServiceImpl implements AccountService {
     @Override
     public ResponseEntity<Object> updateAccount(Account account, Long id) {
         if(accountExists(id)){
-            account.setId(id);
+            account.setAccountId(id);
             repo.save(account);
             return ResponseEntity.ok().build();
         }
