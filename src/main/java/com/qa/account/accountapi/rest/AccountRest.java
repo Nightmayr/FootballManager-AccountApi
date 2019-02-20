@@ -80,7 +80,7 @@ public class AccountRest {
 
 	private void sendToQueue(Account account) {
 		SentAccount accountToStore = new SentAccount(account);
-		jmsTemplate.convertAndSend("AccountQueue", accountToStore);
+		jmsTemplate.convertAndSend("${activemq.queue.name}", accountToStore);
 	}
 
 }
