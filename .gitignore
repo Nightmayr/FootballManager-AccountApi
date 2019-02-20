@@ -1,11 +1,12 @@
 /target/
-!.mvn/wrapper/maven-wrapper.jar
-
-### STS ###
-.apt_generated
 .classpath
 .factorypath
 .project
+
+/bin/
+.scannerwork
+sonar-project.properties
+
 .settings
 .springBeans
 .sts4-cache
