@@ -1,5 +1,5 @@
 projectKey=football-manager:account-api
 serverUrl=http://localhost:9000
 dashboardUrl=http://localhost:9000/dashboard/index/football-manager:account-api
-ceTaskId=AWkKkNN2GyZgb9BhHWM7
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AWkKkNN2GyZgb9BhHWM7
+ceTaskId=AWkLUg6uGyZgb9BhHWM-
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AWkLUg6uGyZgb9BhHWM-
