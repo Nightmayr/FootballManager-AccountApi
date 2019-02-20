@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.account.accountapi.persistence.domain.Account;
+import com.qa.account.accountapi.persistence.domain.SentAccount;
 import com.qa.account.accountapi.rest.AccountRest;
 import com.qa.account.accountapi.service.AccountService;
 import com.qa.account.accountapi.util.exceptions.AccountNotFoundException;
@@ -31,12 +32,19 @@ public class RepoIntegrationTesting {
 	
 	@Rule
 	public final ExpectedException exception = ExpectedException.none();
+	
+	@Autowired
+	private SentAccount sent;
+	
 
 	@Autowired
 	private AccountRest rest;
 	
 	@Autowired
 	private AccountService service;
+	
+	@Autowired
+	
 	
 	private TestRestTemplate restTemp = new TestRestTemplate();
 
@@ -83,7 +91,7 @@ public class RepoIntegrationTesting {
 	
 	@Test
 	public void gettersTest() {
-		
+		assertEquals("")
 		
 	}
 	
