@@ -55,6 +55,9 @@
 			<scope>test</scope>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+
+		
 	</dependencies>
 
 	<build>

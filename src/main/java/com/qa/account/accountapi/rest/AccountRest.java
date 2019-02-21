@@ -1,7 +1,6 @@
 package com.qa.account.accountapi.rest;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +33,7 @@ public class AccountRest {
 
 	@Autowired
 	private JmsTemplate jmsTemplate;
-	
+
 	@Value("${path.base}")
 	private String basePath;
 
@@ -44,22 +43,31 @@ public class AccountRest {
 	@Value("${path.playerManager}")
 	private String playerManagerPath;
 
+	@Value("${mongoClient}")
+	private String mongoClient;
+
 	@GetMapping("${path.getAccounts}")
-	public List<Account> getAccounts() {
-		return service.getAccounts();
+	public String getAccounts() {
+
+		Object thing = restTemplate.getForObject(mongoClient, Object.class);
+		String aString = thing.toString();
+		return aString;
 	}
 
 	@GetMapping("${path.getAccountById}")
 	public Account getAccount(@PathVariable Long accountId) {
-		return service.getAccount(accountId);
+
+		Account account = restTemplate.getForObject(mongoClient, Account.class);
+
+		return account;
 	}
-	
+
 	@PostMapping("${path.createAccount}")
 	public Account createAccount(@RequestBody Account account) {
 		sendToQueue(account);
 		return service.addAccount(account);
 	}
-	
+
 	@PutMapping("${path.updateAccount}")
 	public ResponseEntity<Object> updateAccount(@RequestBody Account account, @PathVariable Long accountId) {
 		return service.updateAccount(account, accountId);
@@ -72,8 +80,8 @@ public class AccountRest {
 
 	@PutMapping("${path.changeBoolean}")
 	private Account recievingNewBoolean(@RequestBody Account account) {
-		Boolean booleanToSend = restTemplate.getForObject(
-				playerManagerURL + basePath + playerManagerPath + account.isPlaying(), Boolean.class);
+		Boolean booleanToSend = restTemplate
+				.getForObject(playerManagerURL + basePath + playerManagerPath + account.isPlaying(), Boolean.class);
 		account.setPlaying(booleanToSend);
 		return account;
 	}
@@ -81,7 +89,7 @@ public class AccountRest {
 
 	private void sendToQueue(Account account) {
 		SentAccount accountToStore = new SentAccount(account);
-		jmsTemplate.convertAndSend("${activemq.queue.name}", accountToStore);
+		jmsTemplate.convertAndSend("AccountQueue", accountToStore);
 	}
 
 }
