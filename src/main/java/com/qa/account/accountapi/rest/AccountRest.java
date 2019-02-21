@@ -49,27 +49,27 @@ public class AccountRest {
 	@Value("${mongoClient}")
 	private String mongoClient;
 	
-//	@GetMapping("${path.getAccounts}")
-//	public List<Account> getAccounts() {
-//		return service.getAccounts();
-//	}
-	
 	@GetMapping("${path.getAccounts}")
-	public Object getAccounts() {
-		Object obj = restTemplate.getForObject(mongoClient, Object.class);
-		LinkedHashMap objMap = (LinkedHashMap) obj;
-		LinkedHashMap sentAccounts= (LinkedHashMap) objMap.get("_embedded");
-		ArrayList<Object> sentAccounts1 = (ArrayList) sentAccounts.get("sentAccount");
-		ArrayList<Object> sentAccounts2 = new ArrayList<Object>();
-		
-		for(int i =0  ; i < sentAccounts1.size() ; i++) {
-		LinkedHashMap account = (LinkedHashMap) sentAccounts1.get(i);
-		account.remove("_links");
-		sentAccounts2.add(account);
-		}
-		return sentAccounts2;
-		
+	public List<Account> getAccounts() {
+		return restTemplate.getForObject(mongoClient, List.class);
 	}
+	
+//	@GetMapping("${path.getAccounts}")
+//	public Object getAccounts() {
+//		Object obj = restTemplate.getForObject(mongoClient, Object.class);
+//		LinkedHashMap objMap = (LinkedHashMap) obj;
+//		LinkedHashMap sentAccounts= (LinkedHashMap) objMap.get("_embedded");
+//		ArrayList<Object> sentAccounts1 = (ArrayList) sentAccounts.get("sentAccount");
+//		ArrayList<Object> sentAccounts2 = new ArrayList<Object>();
+//		
+//		for(int i =0  ; i < sentAccounts1.size() ; i++) {
+//		LinkedHashMap account = (LinkedHashMap) sentAccounts1.get(i);
+//		account.remove("_links");
+//		sentAccounts2.add(account);
+//		}
+//		return sentAccounts2;
+//		
+//	}
 
 	@GetMapping("${path.getAccountById}")
 	public Account getAccount(@PathVariable Long accountId) {
