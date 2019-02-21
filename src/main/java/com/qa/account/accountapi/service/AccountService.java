@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface AccountService {
 
-    List<Account> getAccounts();
+	List<Account> getAccounts();
 
-    Account getAccount(Long id);
+	Account getAccount(Long accountId);
 
-    Account addAccount(Account account);
+	Account addAccount(Account account);
+	
+	ResponseEntity<Object> updateAccount(Account account, Long accountId);
 
-    ResponseEntity<Object> deleteAccount(Long id);
-
-    ResponseEntity<Object> updateAccount(Account account, Long id);
+	ResponseEntity<Object> deleteAccount(Long accountId);
 }

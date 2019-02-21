@@ -7,4 +7,5 @@ import com.qa.account.accountapi.persistence.domain.Account;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Account, Long> {
+	
 }

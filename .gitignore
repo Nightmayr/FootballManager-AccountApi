@@ -1,31 +1,9 @@
-/target/
-!.mvn/wrapper/maven-wrapper.jar
-
-### STS ###
-.apt_generated
+.mvn
+.settings
+target
 .classpath
 .factorypath
 .project
-.settings
-.springBeans
-.sts4-cache
-
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-
-### NetBeans ###
-/nbproject/private/
-/build/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-#Other
-.vscode
-*.properties
+bin
 .scannerwork
-.DS_Store
+sonar-project.properties

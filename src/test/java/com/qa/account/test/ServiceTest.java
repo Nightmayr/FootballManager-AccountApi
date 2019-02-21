@@ -1,4 +1,4 @@
-package com.qa.Account;
+package com.qa.account.test;
 
 import static org.junit.Assert.assertEquals;
 
@@ -34,13 +34,13 @@ public class ServiceTest {
 	@Mock
 	AccountRepository repo;
 	
-	private static final Account MOCK_ACCOUNT_1 = new Account(1L, "Ben", "Taylor", "C:634893");
-	private static final Account MOCK_ACCOUNT_2 = new Account(2L, "Alvin", "Joseph", "B:749452");
+	private static final Account MOCK_ACCOUNT_1 = new Account(1L, "Umayr", "Cigar", false);
+	private static final Account MOCK_ACCOUNT_2 = new Account(2L, "Alvin", "Joseph", false);
 	private static final Optional<Account> MOCK_ACCOUNT_OPTIONAL = Optional.of(MOCK_ACCOUNT_1);
 	private static final Optional<Account> MOCK_NULL_OPTIONAL = Optional.empty();
-	private static final ResponseEntity<Object> MOCK_OK_RESPONSE = new ResponseEntity<Object>(HttpStatus.OK);
-	private static final ResponseEntity<Object> MOCK_NOT_FOUND_RESPONSE = new ResponseEntity<Object>(HttpStatus.NOT_FOUND);
-	
+	private static final ResponseEntity<Object> MOCK_OK_RESPONSE = new ResponseEntity<>(HttpStatus.OK);
+	private static final ResponseEntity<Object> MOCK_NOT_FOUND_RESPONSE = new ResponseEntity<>(HttpStatus.NOT_FOUND);
+	 
 	@Test
 	public void getAccountsTest() {
 		List<Account> MOCK_LIST = new ArrayList<>();;
