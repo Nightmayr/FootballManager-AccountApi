@@ -34,8 +34,8 @@ public class ServiceTest {
 	@Mock
 	AccountRepository repo;
 	
-	private static final Account MOCK_ACCOUNT_1 = new Account(1L, "Umayr", "Cigar", false);
-	private static final Account MOCK_ACCOUNT_2 = new Account(2L, "Alvin", "Joseph", false);
+	private static final Account MOCK_ACCOUNT_1 = new Account("example1@hotmail.com", "Umayr", "Cigar", false);
+	private static final Account MOCK_ACCOUNT_2 = new Account("example2@hotmail.com", "Alvin", "Joseph", false);
 	private static final Optional<Account> MOCK_ACCOUNT_OPTIONAL = Optional.of(MOCK_ACCOUNT_1);
 	private static final Optional<Account> MOCK_NULL_OPTIONAL = Optional.empty();
 	private static final ResponseEntity<Object> MOCK_OK_RESPONSE = new ResponseEntity<>(HttpStatus.OK);
