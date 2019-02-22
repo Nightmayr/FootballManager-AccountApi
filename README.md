@@ -37,7 +37,7 @@ As a QA employee, you can register an account using your QA email address. Once 
 # 1. Architecture
 ## High level architecture diagram
 
-![HLD1](/HLD1.JPG)
+![HLD1](/HLD1.jpg)
 
 From the diagram we can see four major components of the entire application.
 
