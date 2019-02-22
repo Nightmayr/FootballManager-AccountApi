@@ -44,9 +44,13 @@ public class AccountRest {
 	@Value("${path.playerManager}")
 	private String playerManagerPath;
 
+	@Value("${mongoClient}")
+	private String mongoClient;
+	
+	@SuppressWarnings("unchecked")
 	@GetMapping("${path.getAccounts}")
 	public List<Account> getAccounts() {
-		return service.getAccounts();
+		return restTemplate.getForObject(mongoClient, List.class);
 	}
 
 	@GetMapping("${path.getAccountById}")
@@ -73,7 +77,7 @@ public class AccountRest {
 	@PutMapping("${path.changeBoolean}")
 	private Account recievingNewBoolean(@RequestBody Account account) {
 		Boolean booleanToSend = restTemplate.getForObject(
-				playerManagerURL + basePath + playerManagerPath + account.isPlaying(), Boolean.class);
+				playerManagerURL + basePath + playerManagerPath + account.getPlaying(), Boolean.class);
 		account.setPlaying(booleanToSend);
 		return account;
 	}

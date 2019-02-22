@@ -33,8 +33,8 @@ public class EndpointTests {
 	RestTemplate restTemp;
 	
 	private static final String MOCK_ACCOUNT_NUMBER = "A:453893";
-	private static final Account MOCK_ACCOUNT_1 = new Account(1L, "Ben", "Taylor", false);
-	private static final Account MOCK_ACCOUNT_2 = new Account(2L, "Alvin", "Joseph", false);
+	private static final Account MOCK_ACCOUNT_1 = new Account("example1@hotmail.com", "Ben", "Taylor", false);
+	private static final Account MOCK_ACCOUNT_2 = new Account("example2@hotmail.com", "Alvin", "Joseph", false);
 
 	private static final ResponseEntity<Object> MOCK_RESPONSE_ENTITY = new ResponseEntity<>(HttpStatus.ACCEPTED);
 	private static final String MOCK_URL = "http://mock.com";

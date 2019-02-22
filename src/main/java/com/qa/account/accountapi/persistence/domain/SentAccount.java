@@ -3,6 +3,7 @@ package com.qa.account.accountapi.persistence.domain;
 public class SentAccount {
 
 	private Long accountId;
+	private String password;
 	private String fullName;
 	private String email;
 	private Boolean playing;
@@ -16,7 +17,8 @@ public class SentAccount {
 		this.accountId = account.getAccountId();
 		this.setFullName(account.getFullName());
 		this.setEmail(account.getEmail());
-		this.setPlaying(account.isPlaying());
+		this.setPlaying(account.getPlaying());
+		this.setPassword(account.getPassword());
 
 	}
 
@@ -50,6 +52,14 @@ public class SentAccount {
 
 	public void setPlaying(boolean playing) {
 		this.playing = playing;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 

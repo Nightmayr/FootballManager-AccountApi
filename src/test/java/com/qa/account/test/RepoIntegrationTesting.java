@@ -40,8 +40,8 @@ public class RepoIntegrationTesting {
 	@Autowired
 	private AccountService service;
 
-	private static final Account MOCK_ACCOUNT = new Account(1L, "Ben", "Taylor", false);
-	private static final Account MOCK_UPDATED_ACCOUNT = new Account(1L, "Alvin", "Joseph",true); 
+	private static final Account MOCK_ACCOUNT = new Account("example1@hotmail.com", "Ben", "Taylor", false);
+	private static final Account MOCK_UPDATED_ACCOUNT = new Account("example2@hotmail.com", "Alvin", "Joseph",true); 
 	
 	@Test
 	public void aAddAccountTest() {
