@@ -72,12 +72,12 @@ public class RepoIntegrationTesting {
 		assertEquals(MOCK_UPDATED_ACCOUNT.toString(), service.getAccount(1L).toString());
 	}
 	
-	@Test
-	public void eDeleteAccountTest() {
-		List<Account> emptyList = new ArrayList<>();
-		assertEquals(new ResponseEntity<Object>(HttpStatus.OK), rest.deleteAccount(1L));
-		assertEquals(new ResponseEntity<Object>(HttpStatus.NOT_FOUND), rest.deleteAccount(2L));
-		assertEquals(emptyList, rest.getAccounts());
-	}
+//	@Test
+//	public void eDeleteAccountTest() {
+//		List<Account> emptyList = new ArrayList<>();
+//		assertEquals(new ResponseEntity<Object>(HttpStatus.OK), rest.deleteAccount(1L));
+//		assertEquals(new ResponseEntity<Object>(HttpStatus.NOT_FOUND), rest.deleteAccount(2L));
+//		assertEquals(emptyList, rest.getAccounts());
+//	}
 	
 }

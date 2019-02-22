@@ -56,12 +56,12 @@ public class EndpointTests {
 		Mockito.verify(service).getAccount(1L);
 	}
 	
-	@Test
-	public void deleteAccountTest() {
-		Mockito.when(service.deleteAccount(1L)).thenReturn(MOCK_RESPONSE_ENTITY);
-		assertEquals(MOCK_RESPONSE_ENTITY, rest.deleteAccount(1L));
-		Mockito.verify(service).deleteAccount(1L);
-	}
+//	@Test
+//	public void deleteAccountTest() {
+//		Mockito.when(service.deleteAccount(1L)).thenReturn(MOCK_RESPONSE_ENTITY);
+//		assertEquals(MOCK_RESPONSE_ENTITY, rest.deleteAccount(1L));
+//		Mockito.verify(service).deleteAccount(1L);
+//	}
 	 
 	@Test
 	public void updateAccountTest() {
