@@ -54,6 +54,9 @@ public class AccountRest {
 
 	@Value("${mongoGetById}")
 	private String mongoGetById;
+
+	@Value("${mongoGetPlaying}")
+	private String mongoGetPlaying;
 	
 	@Value("${mongoUpdate}")
 	private String mongoUpdate;
@@ -71,6 +74,13 @@ public class AccountRest {
 	public ResponseEntity<Account> getAccount(@PathVariable Long accountId) {
 		return restTemplate.getForEntity(mongoBase + mongoGetById + accountId, Account.class);
 	}
+
+	@SuppressWarnings("unchecked")
+	@GetMapping("${path.getPlaying}")
+	public List<Account> getPlaying() {
+		return restTemplate.getForObject(mongoBase + mongoGetPlaying, List.class);
+	}
+
 	
 	@PostMapping("${path.createAccount}")
 	public Account createAccount(@RequestBody Account account) {
