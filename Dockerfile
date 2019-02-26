@@ -1,10 +1,5 @@
-FROM maven:latest as maven-build
-WORKDIR /build
-COPY . .
-RUN mvn package spring-boot:repackage
 
-FROM openjdk:8-jdk-alpine
-# VOLUME /tmp
+FROM openjdk
 COPY --from=maven-build /build/target/Account-0.0.1-SNAPSHOT.jar .
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
