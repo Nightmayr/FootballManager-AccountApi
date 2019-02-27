@@ -167,10 +167,13 @@ This API listens to the queue on localhost:3306 and waits until there is data it
 It then picks the data and persists it to MongoDB.
 
 ## MongoDB
-This is a seperate service running on localhost:2701.
+This is a seperate service running on localhost:27017. 
 
 
 # 3. Testing
+
+## Integration Testing
+   * put stuff here hamish
 
 ## Unit Testing
    * Unit testing involves breaking the program down into very small pieces that we can test. More about unit testing [here](http://softwaretestingfundamentals.com/unit-testing/)
@@ -179,3 +182,75 @@ This is a seperate service running on localhost:2701.
 
 # 4. How To Run
 
+## Prerequisites:
+* [Java](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+* [Maven](https://www.mkyong.com/maven/how-to-install-maven-in-windows/)
+* [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Node.js](https://nodejs.org/en/download/)
+* [ActiveMQ](https://activemq.apache.org/getting-started.html)
+* [MongoDB](https://docs.mongodb.com/manual/installation/)
+
+## Steps:
+For a local startup: CURRENTLY FOR TESTING1!!!!!!!!!!
+
+1. Make a new directory to work inside (Rightclick the folder you want 
+2. Create a .bat file with the contents:
+```
+@echo off
+git clone https://github.com/Nightmayr/FootballManager-AccountApi.git
+cd FootballManager-AccountApi
+git checkout development
+cd ..
+
+git clone https://github.com/Nightmayr/FootballManager-Consumer.git
+cd FootballManager-Consumer
+git checkout new-dockerfile
+cd ..
+
+https://github.com/Nightmayr/FootballManager-Email.git
+cd FootballManager-Email
+git checkout qa-reviewed
+cd ..
+
+git clone https://github.com/Nightmayr/FootballManager-Frontend.git
+cd FootballManager-Frontend
+git checkout development
+cd ..
+
+git clone https://github.com/Nightmayr/FootballManager-PlayerManager.git
+cd FootballManager-PlayerManager
+git checkout development
+cd ..
+```
+
+3. Run the .bat file you created
+4. Start the ActiveMQ service
+
+Do this by locating the directory where you have extracted the activemq files. Open command prompt and navigate to the 'bin' folder within the activemq files. Run the command 'activemq start'. The activemq process should start. You can view the queue on localhost:8161/admin/queues.jsp. The default username and password is 'admin'. 
+
+5. Start MongoDB
+
+Do this by first locating the directory where mongodb is installed. The path will look similar to this *'..\MongoDB\Server\4.0\bin\'*. Open command prompt, navigate to this directory and run the mongo.exe file by typing 'mongo'. Once you hit enter, the mongo service will be running.
+
+6. Create another .bat file with the contents:
+```
+cd FootballManager-AccountApi
+start mvn spring-boot:run
+
+cd ../FootballManager-Consumer
+start mvn spring-boot:run
+
+cd ../FootballManager-Email
+start mvn spring-boot:run
+
+cd ../FootballManager-MongoClientService
+start mvn spring-boot:run
+
+cd ../FootballManager-PlayerManager
+start mvn spring-boot:run
+
+cd ../FootballManager-Frontend
+npm start
+
+
+```
