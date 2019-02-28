@@ -14,7 +14,7 @@ public class SentAccount {
 	}
 
 	public SentAccount(Account account) {
-		this.accountId = account.getAccountId();
+		this.setAccountId(account.getAccountId());
 		this.setFullName(account.getFullName());
 		this.setEmail(account.getEmail());
 		this.setPlaying(account.getPlaying());

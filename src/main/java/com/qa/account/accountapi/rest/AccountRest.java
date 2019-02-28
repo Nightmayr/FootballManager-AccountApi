@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -44,19 +46,41 @@ public class AccountRest {
 	@Value("${path.playerManager}")
 	private String playerManagerPath;
 
-	@Value("${mongoClient}")
-	private String mongoClient;
+	@Value("${mongoBase}")
+	private String mongoBase;
+
+	@Value("${mongoGetAll}")
+	private String mongoGetAll;
+
+	@Value("${mongoGetById}")
+	private String mongoGetById;
+
+	@Value("${mongoGetPlaying}")
+	private String mongoGetPlaying;
+	
+	@Value("${mongoUpdate}")
+	private String mongoUpdate;
+
+	@Value("${mongoDelete}")
+	private String mongoDelete;
 	
 	@SuppressWarnings("unchecked")
 	@GetMapping("${path.getAccounts}")
 	public List<Account> getAccounts() {
-		return restTemplate.getForObject(mongoClient, List.class);
+		return restTemplate.getForObject(mongoBase + mongoGetAll, List.class);
 	}
 
 	@GetMapping("${path.getAccountById}")
-	public Account getAccount(@PathVariable Long accountId) {
-		return service.getAccount(accountId);
+	public ResponseEntity<Account> getAccount(@PathVariable Long accountId) {
+		return restTemplate.getForEntity(mongoBase + mongoGetById + accountId, Account.class);
 	}
+
+	@SuppressWarnings("unchecked")
+	@GetMapping("${path.getPlaying}")
+	public List<Account> getPlaying() {
+		return restTemplate.getForObject(mongoBase + mongoGetPlaying, List.class);
+	}
+
 	
 	@PostMapping("${path.createAccount}")
 	public Account createAccount(@RequestBody Account account) {
@@ -65,13 +89,14 @@ public class AccountRest {
 	}
 	
 	@PutMapping("${path.updateAccount}")
-	public ResponseEntity<Object> updateAccount(@RequestBody Account account, @PathVariable Long accountId) {
-		return service.updateAccount(account, accountId);
+	public ResponseEntity<Account> updateAccount(@RequestBody Account account, @PathVariable Long accountId) {
+		HttpEntity<Account> entity = new HttpEntity<Account>(account);
+		return restTemplate.exchange(mongoBase + mongoUpdate + account.getAccountId(), HttpMethod.PUT, entity, Account.class);
 	}
 
 	@DeleteMapping("${path.deleteAccount}")
-	public ResponseEntity<Object> deleteAccount(@PathVariable Long accountId) {
-		return service.deleteAccount(accountId);
+	public void deleteAccount(@PathVariable Long accountId) {
+		restTemplate.delete(mongoBase + mongoDelete + accountId);
 	}
 
 	@PutMapping("${path.changeBoolean}")
@@ -79,6 +104,7 @@ public class AccountRest {
 		Boolean booleanToSend = restTemplate.getForObject(
 				playerManagerURL + basePath + playerManagerPath + account.getPlaying(), Boolean.class);
 		account.setPlaying(booleanToSend);
+		updateAccount(account, account.getAccountId());
 		return account;
 	}
 
