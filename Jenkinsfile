@@ -18,7 +18,7 @@ node {
     }
  
         stage('Build') {
-            sh 'mvn package spring-boot:repackage'
+            sh 'mvn package -Dmaven.test.skip=true spring-boot:repackage'
         }
  
         stage('Image') {
