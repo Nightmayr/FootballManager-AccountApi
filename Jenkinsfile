@@ -1,9 +1,5 @@
 node {
 
-        withMaven(maven:'maven') {
-          stage('Checkout') {
-            git url: 'https://github.com/Nightmayr/FootballManager-AccountApi.git', branch: 'master'
-        }
 
     try{
         stage('Remove') {
